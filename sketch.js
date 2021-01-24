@@ -60,7 +60,6 @@ function setup(){
 }
 
 function draw(){
-  background("green");
   //Engine.update(engine);
 
   
@@ -129,3 +128,18 @@ function keyPressed(){
         slingShot.attach(polygon.body);
   }
 }
+
+async function getBackgroundImg(){
+  var response = await fetch("http://worldtimeapi.org/api/timezone/America/Los_Angeles");
+  var responseJSON = await response.json();
+
+  var datetime = responseJSON.datetime;
+  var hour = datetime.slice(11,13);
+  
+  if(hour>=0600 && hour<=1800){
+     background("Blue");
+  }
+  else{background("Yellow")
+}
+}
+     
